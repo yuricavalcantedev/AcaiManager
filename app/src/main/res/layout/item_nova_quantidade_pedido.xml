@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_item_listview"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="13dp"
+        android:id="@+id/tv_peso_item_quantidade_pedido"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:text="Valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_valor_item_quantidade_pedido"
+        android:layout_alignTop="@+id/tv_peso_item_quantidade_pedido"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_peso_item_quantidade_pedido"
+        android:layout_toEndOf="@+id/tv_peso_item_quantidade_pedido"
+        android:layout_marginStart="96dp"
+        android:id="@+id/tv_id_item_nova_quantidade_pedido"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_id_item_nova_quantidade_pedido"
+        android:layout_alignEnd="@+id/tv_id_item_nova_quantidade_pedido"
+        android:id="@+id/tv_id_pedido_nova_quantidade_pedido"
+        android:visibility="invisible" />
+
+</RelativeLayout>

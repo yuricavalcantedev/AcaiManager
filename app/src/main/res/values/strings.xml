@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AcaiManager</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="title_activity_novo_pedido">NovoPedidoActivity</string>
+    <string name="texto_listview_pedido_aberto">Nenhum pedido aberto ainda</string>
+    <string name="texto_listview_pedido_concluido">Nenhum pedido concluído ainda</string>
+
+    <string name="preference_login">Salvar Informações</string>
+    <string name="preference_fez_cadastro">Cadastro Realizado</string>
+
+    <string name="email_para_receber_relatorios">yuricavalcante17@gmail.com</string>
+
+</resources>

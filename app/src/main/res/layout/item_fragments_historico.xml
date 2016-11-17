@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:id="@+id/tv_peso_item_listview_historico"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:text="Total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_peso_item_listview_historico"
+        android:layout_alignStart="@+id/tv_peso_item_listview_historico"
+        android:id="@+id/tv_valor_item_listview_historico" />
+
+    <TextView
+        android:text="À vista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_dia_mes_item_listview_historico"
+        android:layout_alignStart="@+id/tv_dia_mes_item_listview_historico"
+        android:id="@+id/tv_pagamento_item_listview_historico" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_pagamento_item_listview_historico"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_id_pedido_item_listview_historico"
+        android:visibility="invisible" />
+
+    <TextView
+        android:text="Dia/Mês"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:id="@+id/tv_dia_mes_item_listview_historico"
+        android:layout_alignBottom="@+id/tv_peso_item_listview_historico"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

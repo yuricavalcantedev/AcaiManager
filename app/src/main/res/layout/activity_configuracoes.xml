@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    tools:context=".Activity.VerDetalhesPedidoActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBarLayout_settings"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:title="Configurações"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:text="Valor de Compra (Kg) :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:id="@+id/textView2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <Switch
+                android:text="Gerar Relatórios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:id="@+id/switch_gerar_relatorio_configuracoes"
+                android:layout_below="@+id/viewSeparador"
+                android:layout_alignStart="@+id/textView2" />
+
+            <CheckBox
+                android:text="Semanalmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_semanalmente_configuracoes"
+                android:enabled="false"
+                android:layout_below="@+id/cb_diariamente_configuracoes"
+                android:layout_alignStart="@+id/textView2"/>
+
+            <CheckBox
+                android:text="Diariamente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_diariamente_configuracoes"
+                android:enabled="false"
+                android:layout_below="@+id/switch_gerar_relatorio_configuracoes"
+                android:layout_alignStart="@+id/textView2" />
+
+            <CheckBox
+                android:text="Mensalmente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_mensalmente_configuracoes"
+                android:enabled="false"
+                android:layout_below="@+id/cb_semanalmente_configuracoes"
+                android:layout_alignStart="@+id/textView2"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/et_valor_compra_configuracoes"
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/textView2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/darker_gray"
+                android:id="@+id/viewSeparador"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/et_valor_venda_configuracoes"
+                android:layout_alignStart="@+id/textView2" />
+
+            <TextView
+                android:text="Valor de Venda (Kg) :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:id="@+id/textView3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_below="@+id/et_valor_compra_configuracoes"
+                android:layout_alignStart="@+id/textView2" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/et_valor_venda_configuracoes"
+                android:layout_below="@+id/textView3"
+                android:layout_alignStart="@+id/textView3" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_nova_venda"
+            android:icon="@drawable/ic_nova_venda"
+            android:title="Nova Venda" />
+
+        <item
+            android:id="@+id/nav_historico"
+            android:icon="@drawable/ic_historico"
+            android:title="Histórico de Vendas" />
+
+        <item
+            android:id="@+id/nav_relatorio"
+            android:icon="@drawable/ic_relatorios"
+            android:title="Relatórios" />
+
+        <item
+            android:id="@+id/nav_configuracoes"
+            android:icon="@drawable/ic_configuracoes"
+            android:title="Configurações" />
+
+        <item
+            android:id="@+id/nav_ajuda"
+            android:icon="@drawable/ic_ajuda"
+            android:title="Ajuda" />
+
+        <item
+            android:id="@+id/nav_fechar_caixa"
+            android:icon="@drawable/ic_fechar_caixa"
+            android:title="Fechar Caixa" />
+
+    </group>
+
+</menu>

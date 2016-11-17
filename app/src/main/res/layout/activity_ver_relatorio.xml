@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:fitsSystemWindows="true"
+tools:context=".Activity.VerDetalhesPedidoActivity">
+
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/appBarLayout_settings"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:title="Ajuda"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
+</android.support.design.widget.AppBarLayout>
+
+<RelativeLayout
+    android:id="@+id/relativeLayoutVerRelatorio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/margin_top_toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/et_filtro_ver_relatorios"
+        android:layout_toStartOf="@+id/bt_filtro_ver_relatorio"
+        android:hint="Ex : 25/11/16" />
+
+    <Button
+        android:text="Filtrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/background_light"
+        android:layout_marginRight="10dp"
+        android:id="@+id/bt_filtro_ver_relatorio"
+        android:layout_alignBaseline="@+id/et_filtro_ver_relatorios"
+        android:layout_alignBottom="@+id/et_filtro_ver_relatorios"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listview_relatorios"
+        android:layout_below="@+id/et_filtro_ver_relatorios"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/et_filtro_ver_relatorios"
+        android:layout_alignEnd="@+id/bt_filtro_ver_relatorio" />
+
+</RelativeLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

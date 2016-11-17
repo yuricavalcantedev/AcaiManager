@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Data do relatório :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="9dp"
+        android:id="@+id/tv_item_data_ver_relatorios" />
+
+    <TextView
+        android:text="Tipo do Relatório"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_item_tipo_relatorio_ver_relatorios"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:layout_alignTop="@+id/tv_item_data_ver_relatorios" />
+
+    <!--Esse total que me refiro é de dinheiro que entrou no caixa. -->
+    <TextView
+        android:text="Total Relatório"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_item_total_ver_relatorios"
+        android:layout_below="@+id/tv_item_tipo_relatorio_ver_relatorios"
+        android:layout_alignEnd="@+id/tv_item_tipo_relatorio_ver_relatorios" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_item_total_ver_relatorios"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tv_item_id_relatorio_ver_relatorios"
+        android:visibility="invisible" />
+
+</RelativeLayout>

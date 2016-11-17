@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <TextView
+        android:text="Forma de Pagamento:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp"
+        android:id="@+id/textView4"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:id="@+id/radio_group">
+
+        <RadioButton
+            android:text="À vista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_avista_finalizar_pedido"
+            android:checked="true" />
+
+        <RadioButton
+            android:text="Cartão"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/rb_cartao_finalizar_pedido" />
+
+    </RadioGroup>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textInputLayout_dinheiro_cliente"
+        android:layout_below="@+id/radio_group"
+        android:layout_alignStart="@+id/radio_group"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dinheiro Cliente"
+            android:id="@+id/editText_dinheiro_cliente"
+            android:inputType="numberDecimal" />
+    </android.support.design.widget.TextInputLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:ems="10"
+        android:layout_marginStart="18dp"
+        android:id="@+id/et_troco_cliente_finalizar_pedido"
+        android:enabled="false"
+        android:layout_alignTop="@+id/tv_troco_cliente_finalizar_pedido"
+        android:layout_toEndOf="@+id/tv_troco_cliente_finalizar_pedido"/>
+
+    <TextView
+        android:text="Total: R$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignBaseline="@+id/tv_total_pedido_finalizar_pedido"
+        android:layout_alignBottom="@+id/tv_total_pedido_finalizar_pedido"
+        android:layout_alignStart="@+id/textInputLayout_dinheiro_cliente" />
+
+    <TextView
+        android:text="00.00"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_total_pedido_finalizar_pedido"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/textInputLayout_dinheiro_cliente"
+        android:layout_toEndOf="@+id/textView7" />
+
+    <TextView
+        android:text="Troco Cliente:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_troco_cliente_finalizar_pedido"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/textView7"
+        android:layout_alignStart="@+id/textView7" />
+
+</RelativeLayout>
