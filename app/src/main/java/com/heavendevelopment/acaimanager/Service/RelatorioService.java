@@ -12,8 +12,6 @@ import com.heavendevelopment.acaimanager.Dominio.Relatorio;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -131,7 +129,7 @@ public class RelatorioService {
         relatorio.setTotalEntrouAVista(totalEntrouAVista);
         relatorio.setTotalEntrouCartao(totalEntrouCartao);
         relatorio.setDiaComMaisVendas("");
-        relatorio.setHorarioCoMaisVendas("");
+        relatorio.setHorarioComMaisVendas("");
 
         //salva o relatório criado
         relatorio.save();
@@ -254,7 +252,7 @@ public class RelatorioService {
         relatorio.setTotalEntrouAVista(totalEntrouAVista);
         relatorio.setTotalEntrouCartao(totalEntrouCartao);
         relatorio.setDiaComMaisVendas("");
-        relatorio.setHorarioCoMaisVendas("");
+        relatorio.setHorarioComMaisVendas("");
 
         //salva o relatório criado
         relatorio.save();
@@ -373,7 +371,7 @@ public class RelatorioService {
         relatorio.setTotalEntrouAVista(totalEntrouAVista);
         relatorio.setTotalEntrouCartao(totalEntrouCartao);
         relatorio.setDiaComMaisVendas("");
-        relatorio.setHorarioCoMaisVendas("");
+        relatorio.setHorarioComMaisVendas("");
 
         //salva o relatório criado
         relatorio.save();

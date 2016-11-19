@@ -379,189 +379,139 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
-        switch (requestCode) {
-            case PERMISSION_CODE:
-                for (int i = 0; i < permissions.length; i++) {
-
-                    if (permissions[i].equalsIgnoreCase(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                            && grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-
-                        gerarPdfDoRelatorio();
-                    }
-                }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    public void callWriteOnSDCard() {
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                callDialog(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_CODE);
-            }
-        } else {
-            gerarPdfDoRelatorio();
-        }
-
-    }
-
-//    // FILE
-//    public void createDeleteFolder() {
-//        String path = Environment.getExternalStorageDirectory().toString() + "/Mant Vida";
-//        File file = new File(Environment.getExternalStorageDirectory().toString() + "/Mant Vida");
+//    private void gerarPdfDoRelatorio(Relatorio relatorio){
 //
-//        if (file.exists()) {
-//            new File(Environment.getExternalStorageDirectory().toString() + "/Mant Vida", "Projeto de Vida.pdf").delete();
-//            if (file.delete()) {
+//        //recebe o relatório e cria o pdf aqui.
+//        Document document = new Document(PageSize.A4);
 //
-//                Toast.makeText(this,"Aperte mais uma vez para gerar o Projeto de Vida em pdf.",Toast.LENGTH_SHORT).show();
+//        try {
+//
+//            String path = Environment.getExternalStorageDirectory().toString() + "/AcaiManager/Relatorios";
+//            File file = new File(Environment.getExternalStorageDirectory().toString() + "/AcaiManager/Relatorios");
+//
+//            int tipoRelatorio = relatorio.getTipo_relatorio();
+//            String filename;
+//            String tituloPdf;
+//            String subtitituloPdf;
+//
+//            if(tipoRelatorio == 1){
+//                filename = "Relatório Diário - " + relatorio.getDia() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
+//                tituloPdf = "Relatório Diário";
+//                subtitituloPdf = "Dia : " + relatorio.getDia() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
+//
+//            }else if(tipoRelatorio == 2) {
+//                filename = "Relatório Semanal - " + relatorio.getSemanaDoMes() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
+//                tituloPdf = "Relatório Semanal";
+//                subtitituloPdf = "Semana :" + relatorio.getSemanaDoMes() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
+//
+//            }else {
+//                filename = "Relatório Mensal - " + relatorio.getMes() + "/" + relatorio.getAno();
+//                tituloPdf = "Relatório Mensal";
+//                subtitituloPdf = "Mês : " + relatorio.getMes() + "/" + relatorio.getAno();
+//
 //            }
-//        } else {
-//            if (file.mkdir()) {
-//                gerarPdfDoRelatorio(path);
-//            } else {
+//
+//
+//            File dir = new File(path, filename);
+//            if (!dir.exists()) {
+//                dir.getParentFile().mkdirs();
 //            }
+//
+//            FileOutputStream fOut = new FileOutputStream(dir);
+//            fOut.flush();
+//
+//            //Fontes
+//            Font fontTitulo = new Font(Font.FontFamily.COURIER, 25, Font.BOLD);
+//            Font fontSubTitulo = new Font(Font.FontFamily.COURIER, 20, Font.NORMAL);
+//            Font fontLabel = new Font(Font.FontFamily.TIMES_ROMAN, 16);
+//            Font fontValor = new Font(Font.FontFamily.HELVETICA, 14);
+//            Font fontRodape = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLDITALIC);
+//
+//            Paragraph titulo = new Paragraph(tituloPdf, fontTitulo);
+//            titulo.setAlignment(Element.ALIGN_CENTER);
+//
+//            Paragraph subTitutlo = new Paragraph(subtitituloPdf + "\n\n", fontSubTitulo);
+//            titulo.setAlignment(Element.ALIGN_LEFT);
+//
+//            PdfWriter.getInstance(document, fOut);
+//            document.open();
+//
+//            document.add(titulo);
+//            document.add(subTitutlo);
+//
+//            Paragraph paragraphData = new Paragraph(subtitituloPdf , fontLabel);
+//            paragraphData.setAlignment(Element.CHAPTER);
+//            paragraphData.setSpacingAfter(20);
+//            document.add(paragraphData);
+//
+//            Paragraph paragraphNumVendasAVista = new Paragraph("Número de vendas à vista : " + relatorio.getQtdPedidosAVista() , fontLabel);
+//            paragraphNumVendasAVista.setAlignment(Element.CHAPTER);
+//            paragraphNumVendasAVista.setSpacingAfter(20);
+//            document.add(paragraphNumVendasAVista);
+//
+//            Paragraph paragraphNumVendasCartao = new Paragraph("Número de vendas no cartão : " + relatorio.getQtdPedidosCartao() , fontLabel);
+//            paragraphNumVendasCartao.setAlignment(Element.CHAPTER);
+//            paragraphNumVendasCartao.setSpacingAfter(20);
+//            document.add(paragraphNumVendasCartao);
+//
+//            Paragraph paragraphNumVendasTotal = new Paragraph("Número total de vendas : " + relatorio.getQtdPedidosVendidos() , fontLabel);
+//            paragraphNumVendasTotal.setAlignment(Element.CHAPTER);
+//            paragraphNumVendasTotal.setSpacingAfter(20);
+//            document.add(paragraphNumVendasTotal);
+//
+//            Paragraph paragraphTotalEntradaAVista = new Paragraph("Valor que entrou à vista : R$ " + relatorio.getTotalEntrouAVista() , fontLabel);
+//            paragraphTotalEntradaAVista.setAlignment(Element.CHAPTER);
+//            paragraphTotalEntradaAVista.setSpacingAfter(20);
+//            document.add(paragraphTotalEntradaAVista);
+//
+//            Paragraph paragraphTotalEntradaCartao  = new Paragraph("Valor que entrou no cartão : R$ " + relatorio.getTotalEntrouCartao() , fontLabel);
+//            paragraphTotalEntradaCartao.setAlignment(Element.CHAPTER);
+//            paragraphTotalEntradaCartao.setSpacingAfter(20);
+//            document.add(paragraphTotalEntradaCartao);
+//
+//            double totalEntrada = relatorio.getTotalEntrouAVista() + relatorio.getTotalEntrouCartao();
+//            BigDecimal bd = new BigDecimal(totalEntrada).setScale(2, RoundingMode.HALF_EVEN);
+//            totalEntrada = bd.doubleValue();
+//
+//            Paragraph paragraphTotalEntrada = new Paragraph("Valor que entrou no total : R$" + totalEntrada , fontLabel);
+//            paragraphTotalEntrada.setAlignment(Element.CHAPTER);
+//            paragraphTotalEntrada.setSpacingAfter(20);
+//            document.add(paragraphTotalEntrada);
+//
+//            Paragraph paragraphLucroTotalAVista = new Paragraph("Lucro real à vista : " + relatorio.getLucroAvista() , fontLabel);
+//            paragraphLucroTotalAVista.setAlignment(Element.CHAPTER);
+//            paragraphLucroTotalAVista.setSpacingAfter(20);
+//            document.add(paragraphLucroTotalAVista);
+//
+//            Paragraph paragraphLucroTotalCartao = new Paragraph("Lucro real no cartão: " + relatorio.getLucroCartao() , fontLabel);
+//            paragraphLucroTotalCartao.setAlignment(Element.CHAPTER);
+//            paragraphLucroTotalCartao.setSpacingAfter(20);
+//            document.add(paragraphLucroTotalCartao);
+//
+//            Paragraph paragraphLucroTotal = new Paragraph("Lucro real no total : " + relatorio.getLucroTotal() , fontLabel);
+//            paragraphLucroTotal.setAlignment(Element.CHAPTER);
+//            paragraphLucroTotal.setSpacingAfter(20);
+//            document.add(paragraphLucroTotal);
+//
+//            Paragraph rodape = new Paragraph("Heaven Development\n heavendevelopment@gmail.com", fontRodape);
+//            rodape.setAlignment(Element.ALIGN_BOTTOM);
+//            document.add(rodape);
+//
+//            Toast.makeText(this,"Relatório criado com sucesso na pasta do app.",Toast.LENGTH_SHORT).show();
+//
+//
+//        } catch (DocumentException e) {
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            document.close();
 //        }
+//
 //    }
-
-    private void gerarPdfDoRelatorio(Relatorio relatorio){
-
-        //recebe o relatório e cria o pdf aqui.
-        Document document = new Document(PageSize.A4);
-
-        try {
-
-            String path = Environment.getExternalStorageDirectory().toString() + "/AcaiManager/Relatorios";
-            File file = new File(Environment.getExternalStorageDirectory().toString() + "/AcaiManager/Relatorios");
-
-            int tipoRelatorio = relatorio.getTipo_relatorio();
-            String filename;
-            String tituloPdf;
-            String subtitituloPdf;
-
-            if(tipoRelatorio == 1){
-                filename = "Relatório Diário - " + relatorio.getDia() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
-                tituloPdf = "Relatório Diário";
-                subtitituloPdf = "Dia : " + relatorio.getDia() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
-
-            }else if(tipoRelatorio == 2) {
-                filename = "Relatório Semanal - " + relatorio.getSemanaDoMes() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
-                tituloPdf = "Relatório Semanal";
-                subtitituloPdf = "Semana :" + relatorio.getSemanaDoMes() + "/" + relatorio.getMes() + "/" + relatorio.getAno();
-
-            }else {
-                filename = "Relatório Mensal - " + relatorio.getMes() + "/" + relatorio.getAno();
-                tituloPdf = "Relatório Mensal";
-                subtitituloPdf = "Mês : " + relatorio.getMes() + "/" + relatorio.getAno();
-
-            }
-
-
-            File dir = new File(path, filename);
-            if (!dir.exists()) {
-                dir.getParentFile().mkdirs();
-            }
-
-            FileOutputStream fOut = new FileOutputStream(dir);
-            fOut.flush();
-
-            //Fontes
-            Font fontTitulo = new Font(Font.FontFamily.COURIER, 25, Font.BOLD);
-            Font fontSubTitulo = new Font(Font.FontFamily.COURIER, 20, Font.NORMAL);
-            Font fontLabel = new Font(Font.FontFamily.TIMES_ROMAN, 16);
-            Font fontValor = new Font(Font.FontFamily.HELVETICA, 14);
-            Font fontRodape = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLDITALIC);
-
-            Paragraph titulo = new Paragraph(tituloPdf, fontTitulo);
-            titulo.setAlignment(Element.ALIGN_CENTER);
-
-            Paragraph subTitutlo = new Paragraph(subtitituloPdf + "\n\n", fontSubTitulo);
-            titulo.setAlignment(Element.ALIGN_LEFT);
-
-            PdfWriter.getInstance(document, fOut);
-            document.open();
-
-            document.add(titulo);
-            document.add(subTitutlo);
-
-            Paragraph paragraphData = new Paragraph(subtitituloPdf , fontLabel);
-            paragraphData.setAlignment(Element.CHAPTER);
-            paragraphData.setSpacingAfter(20);
-            document.add(paragraphData);
-
-            Paragraph paragraphNumVendasAVista = new Paragraph("Número de vendas à vista : " + relatorio.getQtdPedidosAVista() , fontLabel);
-            paragraphNumVendasAVista.setAlignment(Element.CHAPTER);
-            paragraphNumVendasAVista.setSpacingAfter(20);
-            document.add(paragraphNumVendasAVista);
-
-            Paragraph paragraphNumVendasCartao = new Paragraph("Número de vendas no cartão : " + relatorio.getQtdPedidosCartao() , fontLabel);
-            paragraphNumVendasCartao.setAlignment(Element.CHAPTER);
-            paragraphNumVendasCartao.setSpacingAfter(20);
-            document.add(paragraphNumVendasCartao);
-
-            Paragraph paragraphNumVendasTotal = new Paragraph("Número total de vendas : " + relatorio.getQtdPedidosVendidos() , fontLabel);
-            paragraphNumVendasTotal.setAlignment(Element.CHAPTER);
-            paragraphNumVendasTotal.setSpacingAfter(20);
-            document.add(paragraphNumVendasTotal);
-
-            Paragraph paragraphTotalEntradaAVista = new Paragraph("Valor que entrou à vista : R$ " + relatorio.getTotalEntrouAVista() , fontLabel);
-            paragraphTotalEntradaAVista.setAlignment(Element.CHAPTER);
-            paragraphTotalEntradaAVista.setSpacingAfter(20);
-            document.add(paragraphTotalEntradaAVista);
-
-            Paragraph paragraphTotalEntradaCartao  = new Paragraph("Valor que entrou no cartão : R$ " + relatorio.getTotalEntrouCartao() , fontLabel);
-            paragraphTotalEntradaCartao.setAlignment(Element.CHAPTER);
-            paragraphTotalEntradaCartao.setSpacingAfter(20);
-            document.add(paragraphTotalEntradaCartao);
-
-            double totalEntrada = relatorio.getTotalEntrouAVista() + relatorio.getTotalEntrouCartao();
-            BigDecimal bd = new BigDecimal(totalEntrada).setScale(2, RoundingMode.HALF_EVEN);
-            totalEntrada = bd.doubleValue();
-
-            Paragraph paragraphTotalEntrada = new Paragraph("Valor que entrou no total : R$" + totalEntrada , fontLabel);
-            paragraphTotalEntrada.setAlignment(Element.CHAPTER);
-            paragraphTotalEntrada.setSpacingAfter(20);
-            document.add(paragraphTotalEntrada);
-
-            Paragraph paragraphLucroTotalAVista = new Paragraph("Lucro real à vista : " + relatorio.getLucroAvista() , fontLabel);
-            paragraphLucroTotalAVista.setAlignment(Element.CHAPTER);
-            paragraphLucroTotalAVista.setSpacingAfter(20);
-            document.add(paragraphLucroTotalAVista);
-
-            Paragraph paragraphLucroTotalCartao = new Paragraph("Lucro real no cartão: " + relatorio.getLucroCartao() , fontLabel);
-            paragraphLucroTotalCartao.setAlignment(Element.CHAPTER);
-            paragraphLucroTotalCartao.setSpacingAfter(20);
-            document.add(paragraphLucroTotalCartao);
-
-            Paragraph paragraphLucroTotal = new Paragraph("Lucro real no total : " + relatorio.getLucroTotal() , fontLabel);
-            paragraphLucroTotal.setAlignment(Element.CHAPTER);
-            paragraphLucroTotal.setSpacingAfter(20);
-            document.add(paragraphLucroTotal);
-
-            Paragraph rodape = new Paragraph("Heaven Development\n heavendevelopment@gmail.com", fontRodape);
-            rodape.setAlignment(Element.ALIGN_BOTTOM);
-            document.add(rodape);
-
-            Toast.makeText(this,"Relatório criado com sucesso na pasta do app.",Toast.LENGTH_SHORT).show();
-
-
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            document.close();
-        }
-
-    }
 
     private void setupViewPager(ViewPager viewPager) {
 
@@ -572,35 +522,6 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(new FragmentPedidosConcluidosMain(), "Pedidos Concluídos");
 
         viewPager.setAdapter(adapter);
-    }
-
-    // UTIL
-    public void callDialog(final String[] permissions) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Deseja criar o pdf do relatório gerado?");
-
-        AlertDialog alertDialog;
-
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                ActivityCompat.requestPermissions(MainActivity.this, permissions, PERMISSION_CODE);
-                Toast.makeText(MainActivity.this, "Pdf criado com sucesso!", Toast.LENGTH_SHORT).show();
-
-                alerta.cancel();
-            }
-        });
-
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                alerta.cancel();
-            }
-        });
-
-
-        alerta = builder.create();
-        alerta.show();
-
     }
 
 

@@ -44,6 +44,9 @@ public class Relatorio extends Model {
     @Column(name = "total_entrou_cartao")
     private double totalEntrouCartao;
 
+    @Column(name = "total_entrou")
+    private double totalEntrou;
+
     @Column(name = "lucro_avista")
     private double lucroAvista;
 
@@ -57,7 +60,7 @@ public class Relatorio extends Model {
     private String diaComMaisVendas;
 
     @Column(name = "horario_com_mais_vendas")
-    private String horarioCoMaisVendas;
+    private String horarioComMaisVendas;
 
 
     public Relatorio(){}
@@ -166,12 +169,12 @@ public class Relatorio extends Model {
         this.diaComMaisVendas = diaComMaisVendas;
     }
 
-    public String getHorarioCoMaisVendas() {
-        return horarioCoMaisVendas;
+    public String getHorarioComMaisVendas() {
+        return horarioComMaisVendas;
     }
 
-    public void setHorarioCoMaisVendas(String horarioCoMaisVendas) {
-        this.horarioCoMaisVendas = horarioCoMaisVendas;
+    public void setHorarioComMaisVendas(String horarioComMaisVendas) {
+        this.horarioComMaisVendas = horarioComMaisVendas;
     }
 
     public int getTipo_relatorio() {
